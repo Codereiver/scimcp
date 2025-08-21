@@ -1,0 +1,41 @@
+version: '3.8'
+
+services:
+  scimcp:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: scimcp:latest
+    container_name: scimcp-server
+    restart: unless-stopped
+    environment:
+      # SCIM API Configuration
+      - SCIM_BASE_URL=${SCIM_BASE_URL}
+      - SCIM_TOKEN=${SCIM_TOKEN}
+      # Optional: Enable debug mode
+      - DEBUG=${DEBUG:-false}
+    # For local development, you might want to mount the source code
+    # volumes:
+    #   - ./scimcp:/app/scimcp:ro
+    networks:
+      - mcp-network
+    # Logging configuration
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+    # Resource limits (optional, adjust as needed)
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 256M
+        reservations:
+          cpus: '0.1'
+          memory: 128M
+
+networks:
+  mcp-network:
+    driver: bridge
+    name: mcp-network
