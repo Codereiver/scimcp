@@ -1,5 +1,7 @@
 # SCIMCP - MCP Server for Cato Networks SCIM API
 
+> ⚠️ **DISCLAIMER**: This is an unofficial, community-developed tool and is NOT an official Cato Networks release. It is not affiliated with, endorsed by, or supported by Cato Networks. Use at your own risk.
+
 A Model Context Protocol (MCP) server that provides SCIM (System for Cross-domain Identity Management) tools for managing users and groups in Cato Networks. This allows LLMs to interact with Cato Networks' identity management system through a standardized protocol.
 
 ## Features
